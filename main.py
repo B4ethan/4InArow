@@ -12,6 +12,8 @@ class OneGame():
             [" ", " ", " ", " ", " ", " ", " "],
         ])
 
+        self.arr_with_boards = []
+
     def turn(self, turn, col):
         # Adjust for 0-based index
         col -= 1
@@ -82,17 +84,18 @@ class OneGame():
 
             if isWin.checkWin() == 1:
                 print("Player 1 won!")
-                return
+                return 1
             
             self.randomPlayerTurn('O')
             
             if isWin.checkWin() == 2:
                 self.printBoard()
                 print("Player 2 won!")
-                return
+                return 2
             
         self.printBoard()
         print("Tie!")
+        return 0
 
 class WinChecker():
     # 1 - live player wins
